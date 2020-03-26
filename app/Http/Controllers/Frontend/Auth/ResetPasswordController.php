@@ -50,12 +50,12 @@ class ResetPasswordController extends Controller
         $user = $this->userRepository->findByPasswordResetToken($token);
 
         if ($user && resolve('auth.password.broker')->tokenExists($user, $token)) {
-            return view('frontend.auth.passwords.reset')
+            return view('web.auth.passwords.reset')
                 ->withToken($token)
                 ->withEmail($user->email);
         }
 
-        return redirect()->route('frontend.auth.password.email')
+        return redirect()->route('web.auth.password.email')
             ->withFlashDanger(__('exceptions.frontend.auth.password.reset_problem'));
     }
 

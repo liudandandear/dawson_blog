@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\Frontend\ContactController;
-use App\Http\Controllers\Frontend\HomeController;
+use App\Http\Controllers\Frontend\TopicController;
 use App\Http\Controllers\Frontend\User\AccountController;
 use App\Http\Controllers\Frontend\User\DashboardController;
 use App\Http\Controllers\Frontend\User\ProfileController;
@@ -10,7 +10,22 @@ use App\Http\Controllers\Frontend\User\ProfileController;
  * Frontend Controllers
  * All route names are prefixed with 'frontend.'.
  */
-Route::get('/', [HomeController::class, 'index'])->name('index');
+
+Route::get('/', [TopicController::class, 'index'])->name('index');
+Route::resource('topics', 'TopicController', ['only' => ['index', 'create', 'store', 'update', 'edit', 'destroy']]);
+Route::resource('books', 'BooksController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
+Route::resource('replies', 'RepliesController', ['only' => ['store', 'destroy']]);
+Route::resource('notifications', 'NotificationsController', ['only' => ['index']]);
+Route::get('permission-denied', 'PagesController@permissionDenied')->name('permission-denied');
+
+Route::get('topics/{topic}/{slug?}', [TopicController::class, 'show'])->name('topics.show');
+//Route::resource('books', 'BooksController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
+
+Route::resource('categories', 'CategoriesController', ['only' => ['show']]);
+Route::resource('categories', 'CategoriesController', ['only' => ['show']]);
+
+Route::post('upload_image', [TopicController::class, 'uploadImage'])->name('upload_image');
+
 Route::get('contact', [ContactController::class, 'index'])->name('contact');
 Route::post('contact/send', [ContactController::class, 'send'])->name('contact.send');
 

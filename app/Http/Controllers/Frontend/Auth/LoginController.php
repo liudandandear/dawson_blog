@@ -32,7 +32,7 @@ class LoginController extends Controller
      */
     public function showLoginForm()
     {
-        return view('frontend.auth.login');
+        return view('web.auth.login');
     }
 
     /**

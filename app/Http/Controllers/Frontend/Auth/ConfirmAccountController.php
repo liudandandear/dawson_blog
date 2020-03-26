@@ -36,7 +36,7 @@ class ConfirmAccountController extends Controller
     {
         $this->user->confirm($token);
 
-        return redirect()->route('frontend.auth.login')->withFlashSuccess(__('exceptions.frontend.auth.confirmation.success'));
+        return redirect()->route('web.auth.login')->withFlashSuccess(__('exceptions.frontend.auth.confirmation.success'));
     }
 
     /**
@@ -50,11 +50,11 @@ class ConfirmAccountController extends Controller
         $user = $this->user->findByUuid($uuid);
 
         if ($user->isConfirmed()) {
-            return redirect()->route('frontend.auth.login')->withFlashSuccess(__('exceptions.frontend.auth.confirmation.already_confirmed'));
+            return redirect()->route('web.auth.login')->withFlashSuccess(__('exceptions.frontend.auth.confirmation.already_confirmed'));
         }
 
         $user->notify(new UserNeedsConfirmation($user->confirmation_code));
 
-        return redirect()->route('frontend.auth.login')->withFlashSuccess(__('exceptions.frontend.auth.confirmation.resent'));
+        return redirect()->route('web.auth.login')->withFlashSuccess(__('exceptions.frontend.auth.confirmation.resent'));
     }
 }

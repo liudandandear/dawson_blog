@@ -51,3 +51,12 @@ if (mix.inProduction()) {
         devtool: 'inline-source-map'
     });
 }
+mix.js('resources/assets/js/app.js', 'public/web/js')
+    .sass('resources/assets/sass/app.scss', 'public/web/css')
+    .copyDirectory('resources/assets/editor/js', 'public/web/js')
+    .copyDirectory('resources/assets/editor/css', 'public/web/css')
+    .copyDirectory('resources/assets/editor/css', 'public/web/css')
+    .copyDirectory('resources/assets/semantic/dist/semantic.min.js', 'public/web/js')
+    .copyDirectory('resources/assets/semantic/dist/semantic.min.css', 'public/web/css')
+    .copyDirectory('resources/assets/img/', 'public/web/img')
+;

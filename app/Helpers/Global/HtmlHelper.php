@@ -2,11 +2,11 @@
 
 use App\Helpers\General\HtmlHelper;
 
-if (! function_exists('style')) {
+if (!function_exists('style')) {
     /**
      * @param       $url
      * @param array $attributes
-     * @param null  $secure
+     * @param null $secure
      *
      * @return mixed
      */
@@ -30,7 +30,7 @@ if (! function_exists('script')) {
     }
 }
 
-if (! function_exists('form_cancel')) {
+if (!function_exists('form_cancel')) {
     /**
      * @param        $cancel_to
      * @param        $title
@@ -44,7 +44,7 @@ if (! function_exists('form_cancel')) {
     }
 }
 
-if (! function_exists('form_submit')) {
+if (!function_exists('form_submit')) {
     /**
      * @param        $title
      * @param string $classes
@@ -72,3 +72,10 @@ if (! function_exists('active_class')) {
         return $condition ? $activeClass : $inactiveClass;
     }
 }
+if (!function_exists('route_class')) {
+    function route_class()
+    {
+        return str_replace('.', '-', Route::currentRouteName());
+    }
+}
+

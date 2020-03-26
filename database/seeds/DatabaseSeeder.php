@@ -23,6 +23,9 @@ class DatabaseSeeder extends Seeder
         ]);
 
         $this->call(AuthTableSeeder::class);
+        $this->call(LinksTableSeeder::class);
+        $this->call(ReplysTableSeeder::class);
+        $this->call(TopicsTableSeeder::class);
 
         Model::reguard();
     }

@@ -36,11 +36,16 @@
         </div><!-- #app -->
 
         <!-- Scripts -->
-        @stack('before-scripts')
-        {!! script(mix('js/manifest.js')) !!}
-        {!! script(mix('js/vendor.js')) !!}
-        {!! script(mix('js/frontend.js')) !!}
-        @stack('after-scripts')
+        <script src="{{ asset('js/manifest.js') }}"></script>
+        <script src="{{ asset('js/vendor.js') }}"></script>
+        <script src="{{ asset('js/frontend.js') }}"></script>
+
+
+{{--        @stack('before-scripts')--}}
+{{--        {!! script(mix('js/manifest.js')) !!}--}}
+{{--        {!! script(mix('js/vendor.js')) !!}--}}
+{{--        {!! script(mix('js/frontend.js')) !!}--}}
+{{--        @stack('after-scripts')--}}
 
         @include('includes.partials.ga')
     </body>
